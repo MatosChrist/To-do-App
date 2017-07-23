@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Space+Mono');
+h1 {
+    font-family: 'Concert One', regular;
+    font-size: 30pt;
+    text-align: center;
+    text-decoration-line: underline;
+}
+html {
+    background-color:black;
+}
+.container {
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: none;
+    background-color: white;
+    border-radius: 5px;
+    height: 100%;
+}
+ul {
+    font-family: 'Space Mono', monospace;
+    font-size: 18pt;
+    list-style: none;
+    text-decoration: none;
+    text-align: left;
+}
+li {
+    padding: 0;
+    margin-top: 15px;
+}
+.done {
+    color: red;
+}
