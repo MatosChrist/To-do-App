@@ -12,25 +12,26 @@ var toDoList = [];
 var toggleState = false;
 
 function addItem(todo) {
-    // var newItem = document.createElement('li');
-    // var newItemText = document.createTextNode(todo);
-    // newItem.appendChild(newItemText);
-    // document.getElementById('todo_list').appendChild(newItem);
-    toDoList.push('( ) ' + todo);
-    displayList();
-    modifyUL();
+    addToUl = document.createElement('li');
+    addToUl.textContent = todo;
+    document.getElementById('todo_list').appendChild(addToUl);
+    // toDoList.push('( ) ' + todo);
+    // displayList();
+    // modifyUL();
 };
 
 function removeItem(index) {
-    toDoList.splice(index, 1);
-    displayList();
-    modifyUL();
+    document.getElementById('todo_list').children[index - 1].remove();
+    // toDoList.splice(index, 1);
+    // displayList();
+    // modifyUL();
 };
 
 function modifyItem(index, todo) {
-    toDoList[index] = '( ) ' + todo;
-    displayList();
-    modifyUL();
+    document.getElementById('todo_list').children[index - 1].textContent = todo;
+    // toDoList[index] = '( ) ' + todo;
+    // displayList();
+    // modifyUL();
 };
 
 function toggleItem(index) {
@@ -92,18 +93,29 @@ function displayNotDoneItems() {
     }
 }
 
-function modifyUL() {
-    document.getElementById('todo_list').innerHTML = '';
-    for(i = 0; i < toDoList.length; i++) {
-        var list = document.createElement('li');
-        list.appendChild(document.createTextNode(toDoList[i]));
-        document.getElementById('todo_list').appendChild(list);
+markAsDone = document.getElementById('todo_list')
+markAsDone.addEventListener('click', function(e) {
+    var element = e.target;
+    var callee = e.currentTarget;
+    if (element != callee && element.className === "") {
+        element.className = "done";
+    } else {
+        element.className = "";
     }
-    return document.getElementById('todo_list');
-}
+})
+
+// function modifyUL() {
+//     document.getElementById('todo_list').innerHTML = '';
+//     for(i = 0; i < toDoList.length; i++) {
+//         var list = document.createElement('li');
+//         list.appendChild(document.createTextNode(toDoList[i]));
+//         document.getElementById('todo_list').appendChild(list);
+//     }
+//     return document.getElementById('todo_list');
+// }
 
 //pasos que me ahorro
 
-// addItem('Hacer funcionar bien el script');
-// addItem('Completar el app');
-// addItem('Solucionar bugs');
+addItem('Hacer funcionar bien el script');
+addItem('Completar el app');
+addItem('Solucionar bugs');
