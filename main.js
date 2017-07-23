@@ -6,10 +6,10 @@ function stop(func) {
 }
 //toDoScript
 
-console.log('scriptWorks');
+// console.log('scriptWorks');
 
 var toDoList = [];
-var toggleState = false;
+// var toggleState = false;
 
 function addItem(todo) {
     addToUl = document.createElement('li');
@@ -44,18 +44,18 @@ function toggleItem(index) {
     displayList();
 }
 
-function toggleList() {
-        toggleState = !toggleState;
-        for(a = 0; a < toDoList.length; a++) {
-            if (toDoList[a][1] === ' ' && toggleState === true) {
-                toDoList[a] = toDoList[a].replace(' ', 'x');
-            } else if (toDoList[a][1] === 'x' && toggleState === false) {
-                toDoList[a] = toDoList[a].replace('x', ' ');
-            }
-        }
-    modifyUL();
-    console.log(toDoList);
-}
+// function toggleList() {
+//         toggleState = !toggleState;
+//         for(a = 0; a < toDoList.length; a++) {
+//             if (toDoList[a][1] === ' ' && toggleState === true) {
+//                 toDoList[a] = toDoList[a].replace(' ', 'x');
+//             } else if (toDoList[a][1] === 'x' && toggleState === false) {
+//                 toDoList[a] = toDoList[a].replace('x', ' ');
+//             }
+//         }
+//     modifyUL();
+//     console.log(toDoList);
+// }
 
 function displayList() {
     if (toDoList.length === 0) {return 'your todo list is empty'};
@@ -93,8 +93,8 @@ function displayNotDoneItems() {
     }
 }
 
-markAsDone = document.getElementById('todo_list')
-markAsDone.addEventListener('click', function(e) {
+list = document.getElementById('todo_list')
+list.addEventListener('click', function(e) {
     var element = e.target;
     var callee = e.currentTarget;
     if (element != callee && element.className === "") {
@@ -103,6 +103,17 @@ markAsDone.addEventListener('click', function(e) {
         element.className = "";
     }
 })
+
+button = document.getElementById('toggle_list');
+button.onclick = function() {
+    if(list.className === '' && button.textContent === 'Select All') {
+        list.className = 'done';
+        button.textContent = 'Deselect All';
+    } else {
+        list.className = '';
+        button.textContent = 'Select All';
+    }
+}
 
 // function modifyUL() {
 //     document.getElementById('todo_list').innerHTML = '';

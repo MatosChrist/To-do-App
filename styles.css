@@ -4,6 +4,8 @@ h1 {
     font-size: 30pt;
     text-align: center;
     text-decoration-line: underline;
+    user-select: none;
+    cursor: default;
 }
 html {
     background-color:black;
@@ -22,6 +24,7 @@ ul {
     list-style: none;
     text-decoration: none;
     text-align: left;
+    user-select: none;
 }
 li {
     padding: 0;
