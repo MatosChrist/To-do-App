@@ -9,26 +9,33 @@ function stop(func) {
 // console.log('scriptWorks');
 
 var toDoList = [];
+list = document.getElementById('todo_list')
+toggleButton = document.getElementById('toggle_list');
+todoInputSelect = document.getElementById('todoInput');
+indexInputSelect = document.getElementById('indexInput');
+addButtonSelect = document.getElementById('addBtn');
+modifyButtonSelect = document.getElementById('modifyBtn');
+removeButtonSelect = document.getElementById('removeBtn');
 // var toggleState = false;
 
-function addItem(todo) {
+function addItem() {
     addToUl = document.createElement('li');
-    addToUl.textContent = '* ' + todo;
+    addToUl.textContent = '* ' + todoInputSelect.value;
     document.getElementById('todo_list').appendChild(addToUl);
     // toDoList.push('( ) ' + todo);
     // displayList();
     // modifyUL();
 };
 
-function removeItem(index) {
-    document.getElementById('todo_list').children[index - 1].remove();
+function removeItem() {
+    document.getElementById('todo_list').children[indexInputSelect.value - 1].remove();
     // toDoList.splice(index, 1);
     // displayList();
     // modifyUL();
 };
 
-function modifyItem(index, todo) {
-    document.getElementById('todo_list').children[index - 1].textContent = '* ' + todo;
+function modifyItem() {
+    document.getElementById('todo_list').children[indexInputSelect.value - 1].textContent = '* ' + todoInputSelect.value;
     // toDoList[index] = '( ) ' + todo;
     // displayList();
     // modifyUL();
@@ -93,7 +100,6 @@ function displayNotDoneItems() {
     }
 }
 
-list = document.getElementById('todo_list')
 list.addEventListener('click', function(e) {
     var element = e.target;
     var callee = e.currentTarget;
@@ -104,9 +110,8 @@ list.addEventListener('click', function(e) {
     }
 })
 
-button = document.getElementById('toggle_list');
-button.onclick = function() {
-    if(list.className === '' && button.textContent === 'Select All') {
+toggleButton.onclick = function() {
+    if(list.className === '' && toggleButton.textContent === 'Select All') {
         list.className = 'done';
         button.textContent = 'Deselect All';
     } else {
@@ -125,10 +130,39 @@ button.onclick = function() {
 //     return document.getElementById('todo_list');
 // }
 
+
+
+addButtonSelect.addEventListener('click', function() {
+    if(todoInputSelect && todoInputSelect.value){
+        addItem();
+    } else {
+        alert('Type a to-do')
+    }
+
+});
+
+modifyButtonSelect.addEventListener('click', function() {
+    if(todoInputSelect && todoInputSelect.value && indexInputSelect.value){
+        modifyItem();
+    } else {
+        alert('You forget to type needed data');
+    }
+
+});
+
+removeButtonSelect.addEventListener('click', function() {
+    if(indexInputSelect && indexInputSelect.value){
+        removeItem();
+    } else {
+        alert('You forget to type needed data');
+    }
+
+});
+
 //pasos que me ahorro
 
-addItem('Complete the app');
-addItem('Solve bugs');
-addItem('Rewrite stuff');
-addItem('Rewrite more stuff');
-addItem('kms trying to make a beautiful and minimalist app <3');
+// addItem('Complete the app');
+// addItem('Solve bugs');
+// addItem('Rewrite stuff');
+// addItem('Rewrite more stuff');
+// addItem('kms trying to make a beautiful and minimalist app <3');
