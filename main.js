@@ -13,7 +13,7 @@ var toDoList = [];
 
 function addItem(todo) {
     addToUl = document.createElement('li');
-    addToUl.textContent = todo;
+    addToUl.textContent = '* ' + todo;
     document.getElementById('todo_list').appendChild(addToUl);
     // toDoList.push('( ) ' + todo);
     // displayList();
@@ -28,21 +28,21 @@ function removeItem(index) {
 };
 
 function modifyItem(index, todo) {
-    document.getElementById('todo_list').children[index - 1].textContent = todo;
+    document.getElementById('todo_list').children[index - 1].textContent = '* ' + todo;
     // toDoList[index] = '( ) ' + todo;
     // displayList();
     // modifyUL();
 };
 
-function toggleItem(index) {
-    if (toDoList[index][1] === ' ') {
-            toDoList[index] = toDoList[index].replace(' ', 'x');
-        } else {
-            toDoList[index] = toDoList[index].replace('x', ' ');
-        }
-    modifyUL();
-    displayList();
-}
+// function toggleItem(index) {
+//     if (toDoList[index][1] === ' ') {
+//             toDoList[index] = toDoList[index].replace(' ', 'x');
+//         } else {
+//             toDoList[index] = toDoList[index].replace('x', ' ');
+//         }
+//     modifyUL();
+//     displayList();
+// }
 
 // function toggleList() {
 //         toggleState = !toggleState;
@@ -127,6 +127,8 @@ button.onclick = function() {
 
 //pasos que me ahorro
 
-addItem('Hacer funcionar bien el script');
-addItem('Completar el app');
-addItem('Solucionar bugs');
+addItem('Complete the app');
+addItem('Solve bugs');
+addItem('Rewrite stuff');
+addItem('Rewrite more stuff');
+addItem('kms trying to make a beautiful and minimalist app <3');
