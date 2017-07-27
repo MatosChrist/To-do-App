@@ -19,13 +19,16 @@ removeButtonSelect = document.getElementById('removeBtn');
 textBox = document.createElement('input');
 textBox.type = 'text';
 list = document.querySelector('ul');
+iconCreate = document.createElement('i');
+iconCreate.className = 'material-icons';
+iconCreate.textContent = 'close';
 // var toggleState = false;
 
 function addItem() {
     addToUl = document.createElement('li');
     createInput = document.createElement('input');
     createInput.type = 'text';
-    createInput.placeholder = 'Add to-do';
+    createInput.placeholder = 'Add a to-do';
     addToUl.appendChild(createInput);
     // addToUl.textContent = todoInputSelect.value;
     document.getElementById('todo_list').appendChild(addToUl);
@@ -35,11 +38,25 @@ function addItem() {
 };
 
 function removeItem() {
-    document.getElementById('todo_list').children[indexInputSelect.value - 1].remove();
+    // (!list.children[indexInputSelect.value - 1].children.length > 0)
+    if(list.children[indexInputSelect.value - 1].children.length != 1) {
+        list.children[indexInputSelect.value - 1].remove();
+    } else {
+        alert('You have to select a to-do');
+    }
     // toDoList.splice(index, 1);
     // displayList();
     // modifyUL();
 };
+
+function iconListener() {
+    iconSelector = document.querySelectorAll('i');
+    iconSelector.forEach(function(e) {
+        e.addEventListener('click', function(){
+	        e.parentElement.remove();
+        });
+    });
+}
 
 // function modifyItem() {
 //     document.getElementById('todo_list').children[indexInputSelect.value - 1].textContent = '* ' + todoInputSelect.value;
@@ -110,8 +127,8 @@ function removeItem() {
 list.addEventListener('click', function(e) {
     var element = e.target;
     var callee = e.currentTarget;
-    li = document.querySelector('li');
-    if (element != callee && element.className === "" && element === li) {
+    // li = document.querySelector('li');
+    if (element != callee && element.className === "" && element.textContent.length > 0) {
         element.className = "done";
     } else {
         element.className = "";
@@ -162,14 +179,14 @@ toggleButton.onclick = function() {
 
 // });
 
-removeButtonSelect.addEventListener('click', function() {
-    if(indexInputSelect && indexInputSelect.value){
-        removeItem();
-    } else {
-        alert('You forget to type needed data');
-    }
+// removeButtonSelect.addEventListener('click', function() {
+//     if(indexInputSelect && indexInputSelect.value){
+//         removeItem();
+//     } else {
+//         alert('You forgot to type needed data');
+//     }
 
-});
+// });
 
 // list.addEventListener('click', function(e) {
 //     var element = e.target;
@@ -196,7 +213,10 @@ list.addEventListener('keypress', function(e) {
 	var key = e.which || e.keyCode;
 	if (key === 13) {
         addItem();
-        element.parentElement.textContent = element.value
+        var contentLi = iconCreate.outerHTML + element.value;
+        element.parentElement.innerHTML = contentLi;
+        iconListener();
+        // element.parentElement.textContent = element.value;
 	}
 })
 
