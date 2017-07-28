@@ -49,12 +49,12 @@ list.addEventListener('click', function(e) {
 
 toggleButton.onclick = function() {
     if(list.childNodes.length > 3) {
-        if(list.className === '' && toggleButton.textContent === 'Select All') {
+        if(list.className === '' && toggleButton.textContent === 'Mark All') {
             list.className = 'done';
-            toggleButton.textContent = 'Deselect All';
+            toggleButton.textContent = 'Unmark All';
         } else {
             list.className = '';
-            toggleButton.textContent = 'Select All';
+            toggleButton.textContent = 'Mark All';
         }
     } else {
         alert('You need at least 1 to-do');
