@@ -11,4 +11,4 @@
 - Mark all todos as done
 
 ## To-do-App Screenshot
-![Image of my app](http://imgur.com/a/oYZD5)
+![Image of my app](http://i.imgur.com/IiMpUlF.png)
