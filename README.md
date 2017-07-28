@@ -12,3 +12,6 @@
 
 ## To-do-App Screenshot
 ![Image of my app](http://i.imgur.com/IiMpUlF.png)
+
+## Extras
+> If you want to see the header with the font in the screenshot, feel free to download the font [BEBAS NEUE](http://www.dafont.com/bebas-neue.font)
